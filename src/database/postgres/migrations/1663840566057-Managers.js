@@ -1,10 +1,10 @@
 import { Table } from 'typeorm'
 
-export class Students1663834643151 {
+export class Managers1663840566057 {
   async up(queryRunner) {
     await queryRunner.createTable(
       new Table({
-        name: 'students',
+        name: 'managers',
         columns: [
           {
             name: 'id',
@@ -14,23 +14,13 @@ export class Students1663834643151 {
             generationStrategy: 'uuid'
           },
           {
-            name: 'name',
-            type: 'varchar',
-            isNullable: false
-          },
-          {
             name: 'email',
-            type: 'varchar',
-            isNullable: false
-          },
-          {
-            name: 'ra',
             type: 'varchar',
             isNullable: false,
             isUnique: true
           },
           {
-            name: 'cpf',
+            name: 'password',
             type: 'varchar',
             isNullable: false
           },
@@ -50,6 +40,6 @@ export class Students1663834643151 {
   }
 
   async down(queryRunner) {
-    await queryRunner.dropTable('students')
+    await queryRunner.dropTable('managers')
   }
 }
