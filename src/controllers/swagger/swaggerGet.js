@@ -1,7 +1,6 @@
-import swaggerJSDoc from 'swagger-jsdoc'
-
-export default (req, res) => {
-  const doc = swaggerJSDoc({
+export default (dep) => (req, res) => {
+  const { swagger, responseOk } = dep
+  const doc = swagger({
     apis: ['src/docs/*.yaml'],
     definition: {
       openapi: '3.0.0',
@@ -12,6 +11,5 @@ export default (req, res) => {
     }
   })
 
-  res.writeHead(200, { 'Content-Type': 'application/json' })
-  res.end(JSON.stringify(doc))
+  responseOk(res, doc)
 }
